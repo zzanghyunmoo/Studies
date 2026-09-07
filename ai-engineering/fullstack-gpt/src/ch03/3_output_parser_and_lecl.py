@@ -29,3 +29,6 @@ result = chat.predict_messages(prompt)
 p = CommaOutputParser()
 parsed_res = p.parse(str(result.content))
 print(parsed_res)
+
+chain = template | chat | CommaOutputParser()
+print(chain.invoke({"max_items": 5, "question": "What are poketmons?"}))
